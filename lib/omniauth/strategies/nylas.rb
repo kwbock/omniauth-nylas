@@ -20,6 +20,23 @@ module OmniAuth
           "provider"   => access_token.params["provider"]
         }
       end
+
+      def callback_phase
+        session["omniauth.state.prefix"] = request.params["state"].split(';').first
+        super
+      end
+
+      def authorize_params
+        prepend_string = session["omniauth.state.prefix"]
+        options.authorize_params[:state] = "#{prepend_string};#{SecureRandom.hex(24)}"
+        params = options.authorize_params.merge(options_for("authorize"))
+        if OmniAuth.config.test_mode
+          @env ||= {}
+          @env["rack.session"] ||= {}
+        end
+        session["omniauth.state"] = params[:state]
+        params
+      end
     end
   end
 end
