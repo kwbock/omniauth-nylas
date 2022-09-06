@@ -1,7 +1,7 @@
 # Omniauth::Nylas
 
 [![Gem Version](http://img.shields.io/gem/v/omniauth-nylas.svg)][gem]
-[![Build Status](http://img.shields.io/travis/kwbock/omniauth-nylas.svg)][travis]
+[![Build Status](https://travis-ci.org/kwbock/omniauth-nylas.svg?branch=master)][travis]
 
 [gem]: https://rubygems.org/gems/omniauth-nylas
 [travis]: http://travis-ci.org/kwbock/omniauth-nylas
